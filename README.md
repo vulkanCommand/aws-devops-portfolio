@@ -3,9 +3,6 @@ AWS-DevOps-Portfolio is a hands-on project implementing AWS cloud infrastructure
 
 Sure! Below is the **README.md** content formatted for easy **copy-paste** into your file. Just copy and paste it into your `README.md` file and upload it to your GitHub repository. 🚀
 
----
-
-```md
 # 🚀 AWS Terraform Automated Website Deployment
 
 ## 📌 Overview
@@ -30,7 +27,7 @@ Ensure you have the following installed:
 
 ---
 
-## 🏗️ Infrastructure Setup with Terraform
+## 🏠 Infrastructure Setup with Terraform
 ### **1️⃣ Install Terraform**
 Run the following commands:
 ```bash
@@ -150,7 +147,7 @@ Add the following line:
 ```
 */5 * * * * cd /usr/share/nginx/html && git reset --hard origin/main && git pull origin main && sudo systemctl restart nginx
 ```
-✅ This ensures **your website auto-updates every 5 minutes** when you push changes to GitHub.
+👉 This ensures **your website auto-updates every 5 minutes** when you push changes to GitHub.
 
 ---
 
@@ -162,7 +159,7 @@ After deploying, verify that:
 
 ---
 
-## 🛑 Destroying the Infrastructure
+## 🚽 Destroying the Infrastructure
 To **delete all AWS resources** created by Terraform:
 ```bash
 terraform destroy -auto-approve
@@ -172,3 +169,6 @@ terraform destroy -auto-approve
 
 ## 🎉 Conclusion
 This setup ensures your website **automatically deploys on AWS** with **Terraform & Nginx**, while staying up-to-date with **GitHub auto-sync** using cron jobs.
+
+### **🚀 Happy DevOps!**
+
