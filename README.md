@@ -1,11 +1,11 @@
-# aws-devops-portfolio
+# 🚀 AWS Terraform Automated Website Deployment
+
+## 📌 Overview
+
 AWS-DevOps-Portfolio is a hands-on project implementing AWS cloud infrastructure with DevOps best practices. It covers the entire DevOps lifecycle using industry-standard tools to automate software development, deployment, and monitoring.
 
 Sure! Below is the **README.md** content formatted for easy **copy-paste** into your file. Just copy and paste it into your `README.md` file and upload it to your GitHub repository. 🚀
 
-# 🚀 AWS Terraform Automated Website Deployment
-
-## 📌 Overview
 This project automates the deployment of a **static website** using **Terraform, AWS EC2, Nginx, and GitHub**. It provisions an EC2 instance, installs Nginx, fetches website files from GitHub, and automatically updates the site whenever changes are pushed.
 
 ---
