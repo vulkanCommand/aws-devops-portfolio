@@ -14,6 +14,7 @@ GitHub: Centralized repository for website source code.
 Cron Jobs: Automates periodic updates by pulling the latest changes from GitHub.
 
 Project Breakdown
+
 1️⃣ Infrastructure as Code with Terraform
 The project leverages Terraform to provision an AWS EC2 instance and configure the necessary security groups. Using Terraform’s declarative syntax, we define infrastructure in code, making it easy to deploy, modify, and destroy AWS resources efficiently.
 
@@ -66,7 +67,7 @@ Ensure you have the following installed:
 - A GitHub repository with your **HTML, CSS, and JavaScript** files
 
 ---
-
+## Instillation
 ## 🏠 Step 1: Creating an EC2 Instance
 ### **1️⃣ Launch an EC2 Instance**
 1. Log in to **AWS Management Console**
