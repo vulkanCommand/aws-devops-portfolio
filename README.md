@@ -1,5 +1,6 @@
-AWS-Terraform Automated Website Deployment
-Overview
+# 🚀 AWS Terraform Automated Website Deployment
+
+## 📌 Overview
 This project focuses on automated deployment of a  website using Terraform, AWS EC2, Nginx, and GitHub. The goal is to provision cloud infrastructure efficiently using Infrastructure as Code (IaC) and ensure continuous deployment through GitHub integration. This setup enables seamless website updates whenever changes are pushed to the GitHub repository.
 
 Objective
@@ -45,29 +46,6 @@ Conclusion
 This project demonstrates modern DevOps best practices by automating website deployment using Terraform, AWS, and GitHub. By integrating Infrastructure as Code, automation, and version control, it ensures reliability, efficiency, and maintainability.
 
 This approach is ideal for startups, developers, and businesses looking for a cost-effective and scalable web hosting solution while embracing cloud automation. 🚀
-
-
-
-
-
-
-
-
-
-# 🚀 AWS Terraform Automated Website Deployment
-
-## 📌 Overview
-
-AWS-DevOps-Portfolio is a hands-on project implementing AWS cloud infrastructure with DevOps best practices. It covers the entire DevOps lifecycle using industry-standard tools to automate software development, deployment, and monitoring.
-
-
-This project automates the deployment of a **static website** using **Terraform, AWS EC2, Nginx, and GitHub**. It provisions an EC2 instance, installs Nginx, fetches website files from GitHub, and automatically updates the site whenever changes are pushed.
-
-# 🚀 AWS Terraform Automated Website Deployment
-
-## 📌 Overview
-This project automates the deployment of a **static website** using **Terraform, AWS EC2, Nginx, and GitHub**. It provisions an EC2 instance, installs Nginx, fetches website files from GitHub, and automatically updates the site whenever changes are pushed.
-
 ---
 
 ## 🌟 Features
