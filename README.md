@@ -235,6 +235,8 @@ To **delete all AWS resources** created by Terraform:
 ```bash
 terraform destroy -auto-approve
 ```
+##Screenshots
+
 ![Screenshot 2025-02-07 222944](https://github.com/user-attachments/assets/9270f751-c981-4184-8d0c-d2c7ae698fbb)
 ![Screenshot 2025-02-07 223042](https://github.com/user-attachments/assets/86e7c95f-1d2e-4159-8062-3471363d82c2)
 ![Screenshot 2025-02-07 223108](https://github.com/user-attachments/assets/99e04a82-6ee1-4efd-bc9f-9544f43003ca)
