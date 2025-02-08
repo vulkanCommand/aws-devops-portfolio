@@ -1,11 +1,71 @@
+AWS-Terraform Automated Website Deployment
+Overview
+This project focuses on automated deployment of a  website using Terraform, AWS EC2, Nginx, and GitHub. The goal is to provision cloud infrastructure efficiently using Infrastructure as Code (IaC) and ensure continuous deployment through GitHub integration. This setup enables seamless website updates whenever changes are pushed to the GitHub repository.
+
+Objective
+The primary objective of this project is to automate and streamline the process of deploying and maintaining a web server on AWS, making it efficient, scalable, and easy to manage. By utilizing Terraform, we eliminate manual configurations and ensure that infrastructure is replicable, version-controlled, and easily modifiable.
+
+Key Components
+Terraform: Used to define and provision AWS resources such as EC2 instances and security groups.
+AWS EC2: Virtual server hosting the website.
+Nginx: Web server used to serve static content.
+GitHub: Centralized repository for website source code.
+Cron Jobs: Automates periodic updates by pulling the latest changes from GitHub.
+Project Breakdown
+1️⃣ Infrastructure as Code with Terraform
+The project leverages Terraform to provision an AWS EC2 instance and configure the necessary security groups. Using Terraform’s declarative syntax, we define infrastructure in code, making it easy to deploy, modify, and destroy AWS resources efficiently.
+
+2️⃣ Web Server Setup with Nginx
+Upon launching the EC2 instance, a user data script automatically installs and starts Nginx, setting it up to serve a static website. Nginx is configured to host files from the /usr/share/nginx/html directory.
+
+3️⃣ Automated Deployment from GitHub
+To ensure continuous deployment, the EC2 instance clones the website files from a GitHub repository upon initialization. Additionally, a cron job is set up to periodically check for updates, ensuring that any changes pushed to the GitHub repository are automatically pulled and reflected on the live website.
+
+4️⃣ Security & Access Control
+The AWS security group configuration allows:
+
+SSH (port 22): Restricted access to secure remote connections.
+HTTP (port 80): Open access for serving website traffic.
+5️⃣ Continuous Integration & Deployment (CI/CD)
+By using cron jobs, the EC2 instance periodically runs:
+
+bash
+Copy
+Edit
+cd /usr/share/nginx/html && git reset --hard origin/main && git pull origin main && sudo systemctl restart nginx
+This ensures that the website is always up-to-date with the latest changes from GitHub without manual intervention.
+
+Use Cases & Benefits
+Automated Website Deployment: No manual intervention needed after setup.
+Scalability: Easily replicate infrastructure across multiple instances or environments.
+Version Control & Backup: All changes are tracked via GitHub, ensuring rollback capabilities.
+Infrastructure Consistency: Eliminates configuration drift with IaC principles.
+Cost Efficiency: Uses AWS Free Tier resources with minimal operational cost.
+Conclusion
+This project demonstrates modern DevOps best practices by automating website deployment using Terraform, AWS, and GitHub. By integrating Infrastructure as Code, automation, and version control, it ensures reliability, efficiency, and maintainability.
+
+This approach is ideal for startups, developers, and businesses looking for a cost-effective and scalable web hosting solution while embracing cloud automation. 🚀
+
+
+
+
+
+
+
+
+
 # 🚀 AWS Terraform Automated Website Deployment
 
 ## 📌 Overview
 
 AWS-DevOps-Portfolio is a hands-on project implementing AWS cloud infrastructure with DevOps best practices. It covers the entire DevOps lifecycle using industry-standard tools to automate software development, deployment, and monitoring.
 
-Sure! Below is the **README.md** content formatted for easy **copy-paste** into your file. Just copy and paste it into your `README.md` file and upload it to your GitHub repository. 🚀
 
+This project automates the deployment of a **static website** using **Terraform, AWS EC2, Nginx, and GitHub**. It provisions an EC2 instance, installs Nginx, fetches website files from GitHub, and automatically updates the site whenever changes are pushed.
+
+# 🚀 AWS Terraform Automated Website Deployment
+
+## 📌 Overview
 This project automates the deployment of a **static website** using **Terraform, AWS EC2, Nginx, and GitHub**. It provisions an EC2 instance, installs Nginx, fetches website files from GitHub, and automatically updates the site whenever changes are pushed.
 
 ---
@@ -23,36 +83,86 @@ This project automates the deployment of a **static website** using **Terraform,
 Ensure you have the following installed:
 - [Terraform](https://developer.hashicorp.com/terraform/downloads)
 - [AWS CLI](https://aws.amazon.com/cli/)
+- [Git](https://git-scm.com/downloads)
 - A GitHub repository with your **HTML, CSS, and JavaScript** files
 
 ---
 
-## 🏠 Infrastructure Setup with Terraform
-### **1️⃣ Install Terraform**
-Run the following commands:
-```bash
-sudo apt update
-sudo apt install -y terraform
-terraform -v  # Verify installation
-```
-
-### **2️⃣ Create an AWS IAM User for Terraform**
-1. Go to **AWS IAM Console** → **Users** → **Create User**
-2. Assign **AdministratorAccess** policy
-3. Copy the **Access Key** and **Secret Key** for Terraform
-
-### **3️⃣ Configure AWS CLI**
-```bash
-aws configure
-```
-Enter your:
-- AWS **Access Key**
-- AWS **Secret Key**
-- Default region (e.g., `us-east-1`)
+## 🏠 Step 1: Creating an EC2 Instance
+### **1️⃣ Launch an EC2 Instance**
+1. Log in to **AWS Management Console**
+2. Navigate to **EC2 Dashboard** → **Launch Instance**
+3. Choose **Amazon Linux 2 AMI**
+4. Select **t2.micro** instance type (free tier eligible)
+5. Configure security group to allow **SSH (22), HTTP (80)**
+6. Create or select a **key pair** (download the `.pem` file)
+7. Click **Launch Instance**
 
 ---
 
-## 📝 Terraform Configuration (`main.tf`)
+## 🏢 Step 2: Installing Terraform on EC2
+### **1️⃣ Connect to EC2 Instance**
+```bash
+ssh -i "your-key.pem" ec2-user@<EC2-PUBLIC-IP>
+```
+
+### **2️⃣ Install Terraform**
+```bash
+sudo yum update -y
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum install -y terraform
+terraform -v  # Verify installation
+```
+
+---
+
+## 🏰 Step 3: Installing Nginx, Git, and Setting Up Cron Jobs
+### **1️⃣ Install Nginx & Git**
+```bash
+sudo yum install -y nginx git
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+### **2️⃣ Set Up a Cron Job for Auto-Updates**
+```bash
+crontab -e
+```
+Add the following line:
+```
+*/5 * * * * cd /usr/share/nginx/html && git reset --hard origin/main && git pull origin main && sudo systemctl restart nginx
+```
+This ensures **your website auto-updates every 5 minutes** when you push changes to GitHub.
+
+---
+
+## 📁 Step 4: Creating & Pushing HTML, CSS, and JS Files to GitHub
+### **1️⃣ Initialize a GitHub Repository Locally**
+```bash
+git init
+```
+
+### **2️⃣ Create HTML, CSS, and JS Files**
+```bash
+mkdir website && cd website
+nano index.html  # Add HTML content
+nano styles.css  # Add CSS styles
+nano script.js   # Add JavaScript functionality
+```
+
+### **3️⃣ Push Files to GitHub**
+```bash
+git add .
+git commit -m "Initial commit for website"
+git branch -M main
+git remote add origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git
+git push -u origin main
+```
+
+---
+
+## 📝 Step 5: Terraform Configuration (`main.tf`)
 Create a **Terraform configuration file** (`main.tf`) with the following:
 
 ```hcl
@@ -118,7 +228,7 @@ output "ec2_public_ip" {
 
 ---
 
-## 🚀 Deploying with Terraform
+## 🚀 Step 6: Deploying with Terraform
 Run the following Terraform commands:
 
 ```bash
@@ -129,25 +239,6 @@ Once completed, Terraform will output the **EC2 Public IP**. Access your website
 ```
 http://<EC2-PUBLIC-IP>
 ```
-
----
-
-## 🔄 Automating GitHub Updates with Cron Job
-### **1️⃣ SSH into the EC2 Instance**
-```bash
-ssh -i "terraform-key.pem" ec2-user@<EC2-PUBLIC-IP>
-```
-
-### **2️⃣ Set Up a Cron Job**
-Run:
-```bash
-crontab -e
-```
-Add the following line:
-```
-*/5 * * * * cd /usr/share/nginx/html && git reset --hard origin/main && git pull origin main && sudo systemctl restart nginx
-```
-👉 This ensures **your website auto-updates every 5 minutes** when you push changes to GitHub.
 
 ---
 
