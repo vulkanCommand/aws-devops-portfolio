@@ -1,4 +1,4 @@
-# 🚀 AWS Terraform Automated Website Deployment
+# 🚀 AWS-Terraform Automated Website Deployment
 
 ## 📌 Overview
 This project focuses on automated deployment of a  website using Terraform, AWS EC2, Nginx, and GitHub. The goal is to provision cloud infrastructure efficiently using Infrastructure as Code (IaC) and ensure continuous deployment through GitHub integration. This setup enables seamless website updates whenever changes are pushed to the GitHub repository.
